@@ -24,10 +24,11 @@ body {
 
 /* Header & Navigation */
 header {
+    /* UPDATED: Use Flex column to stack top row and nav row */
     display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    padding: 20px 5%;
+    flex-direction: column;
+    
+    padding: 0 5%; /* Padding now applied only horizontally to the header itself */
     background-color: var(--card-bg);
     box-shadow: 0 2px 4px var(--shadow-color);
     position: sticky;
@@ -35,29 +36,47 @@ header {
     z-index: 100;
 }
 
-/* UPDATED: .logo to use Flexbox */
+/* NEW: Top Row for Logo and Cart */
+.header-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0; /* Vertical padding inside the top row */
+    width: 100%;
+}
+
+/* NEW: Navigation Row (Bottom Row) */
+.header-nav-row {
+    width: 100%;
+    margin-bottom: 10px; /* Optional: Space below the nav box */
+}
+
+
+/* UPDATED: .logo Centering */
 .logo {
-    display: flex; /* Enable flexbox for alignment */
-    align-items: center; /* Vertically center the image and text */
-    gap: 8px; /* Space between the image and the text */
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
     
     font-size: 1.8em;
     font-weight: bold;
     color: var(--primary-color);
-    flex-grow: 1; 
-    text-align: left;
+    flex-grow: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; 
 }
 
-/* UPDATED: Logo image size doubled (from 30px to 60px) */
+
 .header-logo {
-    width: 60px; /* Doubled size */
-    height: 60px; /* Doubled size */
+    width: 60px; 
+    height: 60px; 
     object-fit: contain;
     border-radius: 5px; 
 }
 
 
-/* Navigation Box Container */
+/* Navigation Box Container - Already exists, styling is good */
 .nav-box {
     display: inline-block;
     padding: 10px 20px;
@@ -65,9 +84,9 @@ header {
     border-radius: 12px; 
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
     transition: transform 0.3s ease;
-    flex-grow: 2; 
     text-align: center;
-    order: 2; 
+    width: fit-content; 
+    margin: 0 auto; 
 }
 
 .nav-box:hover {
@@ -161,7 +180,7 @@ header {
     padding: 10px 15px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    flex-grow: 1; 
+    flex-grow: 0; 
     text-align: right;
     order: 3;
 }
@@ -385,6 +404,28 @@ header {
     color: var(--primary-color);
 }
 
+/* --- NEW: Content Page Styling (Terms, Policies, etc.) --- */
+.container h1 {
+    color: var(--primary-color);
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+.container h2 {
+    color: var(--text-color);
+    font-size: 1.6em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.container p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.8;
+}
 
 /* ------------------------------------------- */
 /* RESPONSIVE MEDIA QUERIES          */
@@ -393,16 +434,16 @@ header {
 /* Medium devices (tablets, less than 768px) */
 @media (max-width: 768px) {
     header {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding-bottom: 20px;
+        padding: 0 4%;
+    }
+    
+    .header-top-row {
+        padding: 15px 0;
     }
     
     .logo {
-        margin-bottom: 0;
-        flex-grow: 1;
-        text-align: left;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .nav-box {
@@ -445,13 +486,26 @@ header {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 20px;
     }
+    
+    /* Content styling adjustments for small screens */
+    .container h1 {
+        font-size: 1.8em;
+    }
+
+    .container h2 {
+        font-size: 1.4em;
+    }
+
+    .container p {
+        font-size: 1em;
+    }
 }
 
 
 /* Small devices (phones, less than 480px) */
 @media (max-width: 480px) {
     header {
-        padding: 15px 4%;
+        padding: 0 4%;
     }
     
     .main-nav {
