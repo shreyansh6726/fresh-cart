@@ -35,13 +35,27 @@ header {
     z-index: 100;
 }
 
+/* UPDATED: .logo to use Flexbox */
 .logo {
+    display: flex; /* Enable flexbox for alignment */
+    align-items: center; /* Vertically center the image and text */
+    gap: 8px; /* Space between the image and the text */
+    
     font-size: 1.8em;
     font-weight: bold;
     color: var(--primary-color);
     flex-grow: 1; 
     text-align: left;
 }
+
+/* UPDATED: Logo image size doubled (from 30px to 60px) */
+.header-logo {
+    width: 60px; /* Doubled size */
+    height: 60px; /* Doubled size */
+    object-fit: contain;
+    border-radius: 5px; 
+}
+
 
 /* Navigation Box Container */
 .nav-box {
@@ -72,7 +86,6 @@ header {
 }
 
 .main-nav li {
-    /* Set up relative positioning for the dropdown content */
     position: relative;
 }
 
@@ -83,7 +96,7 @@ header {
     padding: 5px 0;
     position: relative;
     transition: color 0.3s ease;
-    display: block; /* Important for padding and hover area */
+    display: block; 
 }
 
 .main-nav a:hover {
@@ -107,17 +120,17 @@ header {
     right: 0;
 }
 
-/* NEW: Dropdown Content Styling */
+/* Dropdown Content Styling */
 .dropdown-content {
-    display: none; /* Hidden by default */
+    display: none; 
     position: absolute;
-    background-color: var(--card-bg); /* White background for the menu */
+    background-color: var(--card-bg); 
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    top: 100%; /* Position right below the main link */
+    top: 100%;
     left: 50%;
-    transform: translateX(-50%); /* Center the dropdown below the parent link */
+    transform: translateX(-50%); 
     border-radius: 8px;
     overflow: hidden;
     padding: 5px 0;
@@ -133,11 +146,10 @@ header {
 }
 
 .dropdown-content a:hover {
-    background-color: var(--bg-color); /* Subtle hover background */
+    background-color: var(--bg-color); 
     color: var(--primary-color);
 }
 
-/* NEW: Show the dropdown content on hover */
 .main-nav li:hover .dropdown-content {
     display: block;
 }
@@ -413,7 +425,6 @@ header {
         font-size: 0.9em;
     }
     
-    /* Hide dropdown content on small screens to prevent layout issues */
     .dropdown-content {
         display: none !important;
     }
