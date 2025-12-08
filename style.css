@@ -175,9 +175,12 @@ header {
 
 
 .cart-icon {
-    font-size: 1.2em;
+    /* UPDATED SIZE */
+    font-size: 1.4em; /* Increased icon size */
     cursor: pointer;
-    padding: 10px 15px;
+    padding: 12px 18px; /* Increased padding/clickable area */
+    /* END UPDATED SIZE */
+    
     border-radius: 5px;
     transition: background-color 0.3s ease;
     flex-grow: 0; 
@@ -186,10 +189,13 @@ header {
 }
 
 .cart-icon:hover {
-    background-color: var(--bg-color);
+    /* Using Option A for hover fix */
+    background-color: rgba(119, 221, 119, 0.2); 
+    color: var(--primary-color);
 }
 
 .cart-count {
+    /* ... (cart count styles remain unchanged) ... */
     background-color: var(--accent-color-1); 
     color: white;
     border-radius: 50%;
