@@ -1,8 +1,11 @@
 :root {
-    --primary-color: #4CAF50; /* Fresh green */
-    --text-color: #333;
-    --bg-color: #f4f4f9;
-    --card-bg: #fff;
+    /* Updated Color Palette */
+    --primary-color: #77DD77; /* Mint Green (Used for buttons, borders, key elements) */
+    --text-color: #333;       /* Black/Dark Grey for text contrast */
+    --bg-color: #f4f4f9;      /* Light background remains for clean minimalism */
+    --card-bg: #fff;          /* White remains for cards */
+    --accent-color-1: #FF6961; /* Reddish-Coral (Used for cart count/alerts) */
+    --accent-color-2: #FFB347; /* Orange-Peach (Used for secondary highlights/hover) */
     --shadow-color: rgba(0, 0, 0, 0.08);
 }
 
@@ -21,8 +24,6 @@ body {
 
 /* Header & Navigation */
 header {
-    /* UPDATED: Changed display to Flex and justify-content to space-between
-       to manage the three main items: logo, nav-box, and cart icon. */
     display: flex;
     justify-content: space-between; 
     align-items: center;
@@ -38,31 +39,27 @@ header {
     font-size: 1.8em;
     font-weight: bold;
     color: var(--primary-color);
-    /* NEW: Pushes the logo to the left, but its position will be influenced by the order */
     flex-grow: 1; 
     text-align: left;
 }
 
-/* NEW: Navigation Box Container */
+/* Navigation Box Container */
 .nav-box {
-    /* Styles for the "square shaped body with curves" */
     display: inline-block;
     padding: 10px 20px;
-    background-color: var(--bg-color); /* Light background to make it pop out */
-    border-radius: 12px; /* Curves */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle 3D pop effect */
+    background-color: var(--bg-color); 
+    border-radius: 12px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
     transition: transform 0.3s ease;
-    /* This pushes the nav-box to the center area */
     flex-grow: 2; 
     text-align: center;
-    order: 2; /* Ensures it sits in the middle column on desktop */
+    order: 2; 
 }
 
 .nav-box:hover {
-    transform: translateY(-2px); /* Pop out animation on hover */
+    transform: translateY(-2px); 
 }
 
-/* Updated HTML structure is needed to wrap .main-nav in .nav-box */
 .main-nav {
     display: inline-block;
 }
@@ -71,7 +68,12 @@ header {
     list-style: none;
     display: flex;
     gap: 25px;
-    justify-content: center; /* Center links within the nav-box */
+    justify-content: center;
+}
+
+.main-nav li {
+    /* Set up relative positioning for the dropdown content */
+    position: relative;
 }
 
 .main-nav a {
@@ -81,6 +83,7 @@ header {
     padding: 5px 0;
     position: relative;
     transition: color 0.3s ease;
+    display: block; /* Important for padding and hover area */
 }
 
 .main-nav a:hover {
@@ -104,13 +107,49 @@ header {
     right: 0;
 }
 
+/* NEW: Dropdown Content Styling */
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: var(--card-bg); /* White background for the menu */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 100%; /* Position right below the main link */
+    left: 50%;
+    transform: translateX(-50%); /* Center the dropdown below the parent link */
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 5px 0;
+}
+
+.dropdown-content a {
+    color: var(--text-color);
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--bg-color); /* Subtle hover background */
+    color: var(--primary-color);
+}
+
+/* NEW: Show the dropdown content on hover */
+.main-nav li:hover .dropdown-content {
+    display: block;
+}
+
+
 .cart-icon {
     font-size: 1.2em;
     cursor: pointer;
     padding: 10px 15px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    flex-grow: 1; /* Pushes the cart icon to the right */
+    flex-grow: 1; 
     text-align: right;
     order: 3;
 }
@@ -120,7 +159,7 @@ header {
 }
 
 .cart-count {
-    background-color: red;
+    background-color: var(--accent-color-1); 
     color: white;
     border-radius: 50%;
     padding: 2px 6px;
@@ -149,7 +188,7 @@ header {
 
 .search-container:hover {
     border-color: var(--primary-color);
-    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5); 
+    box-shadow: 0 0 10px rgba(119, 221, 119, 0.5); 
 }
 
 #product-search {
@@ -171,7 +210,7 @@ header {
 }
 
 #search-button:hover {
-    background-color: #45a049;
+    background-color: #61b961; 
 }
 
 /* Products Grid */
@@ -227,13 +266,12 @@ header {
 }
 
 .add-to-cart:hover, .checkout-btn:hover {
-    background-color: #45a049;
+    background-color: #61b961; 
 }
 
 .add-to-cart:active, .checkout-btn:active {
     transform: scale(0.98);
 }
-
 
 /* Cart Sidebar */
 .cart-sidebar {
@@ -295,7 +333,44 @@ header {
 }
 
 .close-cart:hover {
-    color: red;
+    color: var(--accent-color-1);
+}
+
+/* Quantity Control Styling */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 150px;
+    margin: 10px auto 0;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    overflow: hidden;
+    height: 40px;
+}
+
+.qty-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0 12px;
+    cursor: pointer;
+    font-size: 1.2em;
+    height: 100%;
+    transition: background-color 0.2s ease;
+}
+
+.qty-btn:hover {
+    background-color: #61b961;
+}
+
+.quantity-display {
+    flex-grow: 1;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--primary-color);
 }
 
 
@@ -306,8 +381,7 @@ header {
 /* Medium devices (tablets, less than 768px) */
 @media (max-width: 768px) {
     header {
-        /* UPDATED: Reset header layout for mobile/tablet */
-        flex-direction: row; /* Back to row layout */
+        flex-direction: row;
         align-items: center;
         justify-content: space-between;
         padding-bottom: 20px;
@@ -320,12 +394,10 @@ header {
     }
     
     .nav-box {
-        /* Hide nav box on smaller screens to force stacking/hamburger menu if implemented */
         display: none; 
     }
     
     .main-nav {
-        /* If we keep the navigation on mobile, force it to stack below the header */
         order: 3;
         width: 100%;
         margin-top: 10px;
@@ -340,9 +412,14 @@ header {
     .main-nav a {
         font-size: 0.9em;
     }
+    
+    /* Hide dropdown content on small screens to prevent layout issues */
+    .dropdown-content {
+        display: none !important;
+    }
 
     .cart-icon {
-        position: relative; /* Back to normal flow */
+        position: relative; 
         top: auto;
         right: auto;
         flex-grow: 0;
@@ -366,7 +443,6 @@ header {
         padding: 15px 4%;
     }
     
-    /* On smallest screens, force the menu to stack below the logo and cart */
     .main-nav {
         order: 3;
         width: 100%;
@@ -397,67 +473,3 @@ header {
         width: 100%;
     }
 }
-:root {
-    --primary-color: #4CAF50; /* Fresh green */
-    --text-color: #333;
-    --bg-color: #f4f4f9;
-    --card-bg: #fff;
-    --shadow-color: rgba(0, 0, 0, 0.08);
-}
-
-/* ... (Existing global styles like *, body, header, logo, nav-box, search-section) ... */
-/* NOTE: Only the relevant new styles are shown below. Please merge this with your existing style.css. */
-
-/* NEW: Quantity Control Styling */
-.quantity-controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 150px; /* Constrain width for neatness */
-    margin: 10px auto 0;
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    overflow: hidden;
-    height: 40px;
-}
-
-.qty-btn {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 0 12px;
-    cursor: pointer;
-    font-size: 1.2em;
-    height: 100%;
-    transition: background-color 0.2s ease;
-}
-
-.qty-btn:hover {
-    background-color: #45a049;
-}
-
-.quantity-display {
-    flex-grow: 1;
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.1em;
-    color: var(--primary-color);
-}
-
-/* ... (Rest of the existing styles for .product-card, .add-to-cart, .cart-sidebar, and Media Queries) ... */
-/* For completeness, ensure your .add-to-cart button styling still exists for the initial state. */
-
-/* Existing .add-to-cart styles that need to remain for the initial button: */
-.add-to-cart, .checkout-btn {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s ease, transform 0.1s ease;
-}
-/* ... */
