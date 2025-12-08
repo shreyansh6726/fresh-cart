@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh-Cart - Home</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="icon" href="logo.png" type="image/png">
+    
+</head>
+<body>
+
+    <header>
+        <div class="logo">Fresh-Cart</div>
+        
+        <div class="nav-box">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#feedback">Feedback</a></li>
+                    <li><a href="#profile">Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="cart-icon" id="cart-icon">🛒 <span class="cart-count">0</span></div>
+    </header>
+
+    <section class="search-section">
+        <div class="search-container">
+            <input type="text" id="product-search" placeholder="Search for fresh fruits, breads, and more..." aria-label="Search products">
+            <button id="search-button">🔍</button>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="products-grid">
+            <div class="product-card" data-id="1" data-name="Organic Apples" data-price="2.99">
+                <img src="placeholder-apple.jpg" alt="Organic Apples">
+                <h3>Organic Apples</h3>
+                <p>$2.99 / lb</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-id="2" data-name="Fresh Bread" data-price="4.50">
+                <img src="placeholder-bread.jpg" alt="Fresh Bread">
+                <h3>Fresh Bread</h3>
+                <p>$4.50 / loaf</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-id="3" data-name="Free-Range Eggs" data-price="5.99">
+                <img src="placeholder-eggs.jpg" alt="Free-Range Eggs">
+                <h3>Free-Range Eggs</h3>
+                <p>$5.99 / dozen</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+            <div class="product-card" data-id="4" data-name="Artisan Cheese" data-price="12.00">
+                <img src="placeholder-cheese.jpg" alt="Artisan Cheese">
+                <h3>Artisan Cheese</h3>
+                <p>$12.00 / piece</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+        </section>
+    </main>
+
+    <aside class="cart-sidebar" id="cart-sidebar">
+        <h2>Your Cart</h2>
+        <ul id="cart-items">
+            </ul>
+        <div class="cart-total">
+            Total: $<span id="total-price">0.00</span>
+        </div>
+        <button class="checkout-btn">Checkout</button>
+        <button class="close-cart" id="close-cart">✕</button>
+    </aside>
+
+    <script src="script.js"></script>
+</body>
+</html>
