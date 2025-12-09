@@ -155,3 +155,98 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial render
     renderCart(); 
 });
+// --- TEST USER ACCOUNTS (Replaces CSV file for front-end testing) ---
+const AUTH_ACCOUNTS = [
+    { id: 'priyanshu.m', pass: 'p187' },
+    { id: 'priyanshu.r', pass: 'p188' },
+    { id: 'sarbik', pass: 's216' },
+    { id: 'shiv', pass: 's224' },
+    { id: 'utkarsh', pass: 'u262' }
+];
+
+// --- LANDING PAGE ANIMATION AND AUTHENTICATION LOGIC (For index.html) ---
+
+// Use a global handler for DOM content loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Select elements from the LANDING PAGE (index.html)
+    const landingContainer = document.getElementById('landing-container');
+    const getStartedBtn = document.getElementById('get-started-btn');
+    const authModal = document.getElementById('authModal');
+    const closeBtn = document.querySelector('.close-btn');
+    const loginBtn = document.getElementById('login-btn');
+    
+    // --- 1. INTRO ANIMATION CHECK ---
+    if (landingContainer) {
+        // Ensure the landing container becomes visible after a slight delay
+        setTimeout(() => {
+            landingContainer.classList.add('active');
+        }, 300); 
+    }
+
+    // --- 2. MODAL OPEN/CLOSE HANDLERS ---
+    if (getStartedBtn && authModal) {
+        // Open Modal on "Get Started" Click
+        getStartedBtn.addEventListener('click', () => {
+            authModal.style.display = 'block';
+            document.getElementById('auth-message').textContent = '';
+            document.getElementById('userId').value = '';
+            document.getElementById('password').value = '';
+        });
+    }
+
+    if (closeBtn && authModal) {
+        // Close Modal on 'x' click
+        closeBtn.addEventListener('click', () => {
+            authModal.style.display = 'none';
+        });
+    }
+
+    // Close modal if user clicks outside of it
+    window.addEventListener('click', (event) => {
+        if (event.target === authModal) {
+            authModal.style.display = 'none';
+        }
+    });
+
+    // --- 3. LOGIN BUTTON EVENT ---
+    if (loginBtn) {
+        loginBtn.addEventListener('click', authenticateUser);
+    }
+    
+    // NOTE: Add your cart functionality or other common functions below this block.
+    // Since the cart elements are now in home.html, any cart-specific JS needs to
+    // be written to run specifically on home.html and the category pages.
+});
+
+// --- AUTHENTICATION FUNCTION ---
+function authenticateUser() {
+    const userId = document.getElementById('userId').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const authMessage = document.getElementById('auth-message');
+
+    if (!userId || !password) {
+        authMessage.textContent = 'Please enter both ID and Password.';
+        return;
+    }
+
+    // Search the predefined array for a matching user
+    const user = AUTH_ACCOUNTS.find(account => 
+        account.id === userId && account.pass === password
+    );
+
+    if (user) {
+        // Successful login
+        authMessage.textContent = 'Authentication successful! Redirecting...';
+        authMessage.style.color = 'green';
+        
+        // Redirect to the new home page
+        setTimeout(() => {
+            window.location.href = 'home.html';
+        }, 800);
+
+    } else {
+        // Failed login
+        authMessage.textContent = 'Invalid User ID or Password. Please try again.';
+        authMessage.style.color = 'red';
+    }
+}
