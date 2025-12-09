@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh-Cart - Checkout</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/png">
+    
+    <style>
+        /* Specific styles for the checkout form layout */
+        .checkout-form-container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        .checkout-form label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .checkout-form input[type="text"],
+        .checkout-form input[type="email"],
+        .checkout-form input[type="tel"],
+        .checkout-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .checkout-form input:focus,
+        .checkout-form textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .checkout-form textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        
+        .confirm-order-btn {
+            background-color: var(--accent-color-1); /* Use accent color for final action */
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            margin-top: 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .confirm-order-btn:hover {
+            background-color: #e55c54; /* Darker red on hover */
+        }
+        
+        .order-summary {
+            padding: 15px;
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .order-summary p {
+            margin: 5px 0;
+            font-size: 1.1em;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div class="checkout-form-container">
+            <h1>Confirm Your Order</h1>
+            <p>Please enter your details to finalize the delivery.</p>
+
+            <div class="order-summary">
+                <p><strong>Total Items:</strong> <span id="summary-items"> (Needs JS)</span></p>
+                <p><strong>Order Total:</strong> ₹<span id="summary-total">0.00 (Needs JS)</span></p>
+            </div>
+
+            <form class="checkout-form" id="confirm-order-form">
+                
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="Enter full name for delivery">
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="e.g., user@example.com">
+
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{10}" title="Ten digits code" placeholder="Enter 10-digit mobile number">
+
+                <label for="address">Delivery Address</label>
+                <textarea id="address" name="address" required placeholder="Street address, City, State, Pincode"></textarea>
+
+                <button type="submit" class="confirm-order-btn">Place Order & Pay</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
