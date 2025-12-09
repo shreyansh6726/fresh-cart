@@ -1,12 +1,12 @@
 :root {
     /* Updated Color Palette */
-    --primary-color: #77DD77; /* Mint Green (Used for buttons, borders, key elements) */
-    --text-color: #333;       /* Black/Dark Grey for text contrast */
-    --bg-color: #f4f4f9;      /* Light background remains for clean minimalism */
-    --card-bg: #fff;          /* White remains for cards */
-    --accent-color-1: #FF6961; /* Reddish-Coral (Used for cart count/alerts) */
-    --accent-color-2: #FFB347; /* Orange-Peach (Used for secondary highlights/hover) */
-    --shadow-color: rgba(0, 0, 0, 0.08);
+    --primary-color: #4CAF50; /* Vibrant Leaf Green (Used for buttons, key elements) */
+    --text-color: #2E3A32;    /* Deep Forest Green/Dark Text Contrast */
+    --bg-color: #E8F5E9;      /* Very Pale Mint Background (Light but not plain white) */
+    --card-bg: #FFFFFF;       /* Pure White for product cards to stand out */
+    --accent-color-1: #FF9800; /* Bright Orange-Amber (Used for cart/alerts) */
+    --accent-color-2: #8BC34A; /* Olive/Lime Green (Used for secondary highlights/hover) */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Slightly deeper shadow for contrast */
 }
 
 * {
