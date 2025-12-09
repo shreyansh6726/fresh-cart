@@ -105,8 +105,8 @@ const renderCart = (cartItemsList, totalPriceSpan, cartCountSpan, productCards) 
         cart.forEach(item => {
             const li = document.createElement('li');
             li.innerHTML = `
-                <span>${item.name} (${item.quantity}x)</span>
-                <span>$${(item.price * item.quantity).toFixed(2)}</span>
+                <span>₹{item.name} (₹{item.quantity}x)</span>
+                <span>₹₹{(item.price * item.quantity).toFixed(2)}</span>
             `;
             cartItemsList.appendChild(li);
         });
@@ -123,7 +123,7 @@ const renderQuantityControls = (card, initialQuantity) => {
     controls.classList.add('quantity-controls');
     controls.innerHTML = `
         <button class="qty-btn decrease">-</button>
-        <span class="quantity-display">${initialQuantity}</span>
+        <span class="quantity-display">₹{initialQuantity}</span>
         <button class="qty-btn increase">+</button>
     `;
     
